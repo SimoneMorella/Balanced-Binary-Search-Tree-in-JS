@@ -22,3 +22,5 @@ function generateRandomArray(size) {
 const genArray = generateRandomArray(11);
 const tree = new Tree(genArray);
 prettyPrint(tree.root);
+tree.insert(32);
+prettyPrint(tree.root);
