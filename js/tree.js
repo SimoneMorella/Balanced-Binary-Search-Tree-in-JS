@@ -68,5 +68,18 @@ export class Tree {
     return current;
   }
 
-  
+  levelOrder(callback) {
+    if (this.root === null) return;
+    let queue = [this.root];
+    let result = [];
+    while (queue.length !== 0) {
+      let current = queue.shift();
+      if (callback) callback(current);
+      result.push(current.num);
+      if (current.left !== null) queue.push(current.left);
+      if (current.right !== null) queue.push(current.right);
+    }
+    if (!callback) return result;
+
+  }
 }

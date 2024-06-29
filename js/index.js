@@ -21,10 +21,11 @@ function generateRandomArray(size) {
 }
 const genArray = generateRandomArray(11);
 const tree = new Tree(genArray);
-prettyPrint(tree.root);
+// prettyPrint(tree.root);
 tree.insert(32);
 tree.insert(31);
 tree.delete(31);
 prettyPrint(tree.root);
 console.log(tree.find(32));
 console.log(tree.find(31));
+console.log(tree.levelOrder());
