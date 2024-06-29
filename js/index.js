@@ -19,7 +19,7 @@ function generateRandomArray(size) {
     () => Math.floor(Math.random() * 100)
   );
 }
-const genArray = generateRandomArray(11);
+const genArray = generateRandomArray(30);
 const tree = new Tree(genArray);
 // prettyPrint(tree.root);
 tree.insert(32);
@@ -28,7 +28,9 @@ tree.delete(31);
 prettyPrint(tree.root);
 console.log(tree.find(32));
 console.log(tree.find(31));
-console.log(tree.levelOrder());
-console.log(tree.preOrder());
-console.log(tree.inOrder());
-console.log(tree.postOrder());
+// console.log(tree.levelOrder());
+// console.log(tree.preOrder());
+// console.log(tree.inOrder());
+// console.log(tree.postOrder());
+// console.log(tree.height(tree.find(70)));
+console.log(tree.depth(tree.find(32)));

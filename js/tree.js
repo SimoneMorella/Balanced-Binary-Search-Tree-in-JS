@@ -110,6 +110,21 @@ export class Tree {
     if (callback) callback(current);
 
     if (!callback) return postOrderArray;
-
   }
+
+  height(node) {
+    if (node === null) return -1;
+    let leftHeight = this.height(node.left) + 1;
+    let rightHeight = this.height(node.right) + 1;
+    return Math.max(leftHeight, rightHeight);
+  }
+
+  depth(node, root = this.root, level = 0) {
+    if (!node) return null;
+    if (root === null) return 0;
+    if (root.num === node.num) return level;
+    if (node.num > root.num) return this.depth(node, root.right, level + 1);
+    else if (node.num < root.num) return this.depth(node, root.left, level + 1);
+  }
+
 }
