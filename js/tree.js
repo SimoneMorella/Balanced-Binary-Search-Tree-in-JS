@@ -89,4 +89,15 @@ export class Tree {
 
     if (!callback) return preOrderArray;
   }
+
+  inOrder(callback, root = this.root, inOrderArray = []) {
+    let current = root;
+    if (current === null) return;
+    this.inOrder(callback, current.left, inOrderArray);
+    inOrderArray.push(current.num);
+    if (callback) callback(current);
+    this.inOrder(callback, current.right, inOrderArray);
+
+    if (!callback) return inOrderArray;
+  }
 }
