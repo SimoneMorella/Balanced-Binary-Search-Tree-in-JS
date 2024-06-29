@@ -100,4 +100,16 @@ export class Tree {
 
     if (!callback) return inOrderArray;
   }
+
+  postOrder(callback, root = this.root, postOrderArray = []) {
+    let current = root;
+    if (current === null) return;
+    this.postOrder(callback, current.left, postOrderArray);
+    this.postOrder(callback, current.right, postOrderArray);
+    postOrderArray.push(current.num);
+    if (callback) callback(current);
+
+    if (!callback) return postOrderArray;
+
+  }
 }

@@ -31,3 +31,4 @@ console.log(tree.find(31));
 console.log(tree.levelOrder());
 console.log(tree.preOrder());
 console.log(tree.inOrder());
+console.log(tree.postOrder());
