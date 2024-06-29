@@ -29,3 +29,4 @@ prettyPrint(tree.root);
 console.log(tree.find(32));
 console.log(tree.find(31));
 console.log(tree.levelOrder());
+console.log(tree.preOrder());

@@ -44,11 +44,9 @@ export class Tree {
     if (root === null) return root;
     if (value > root.num) {
       root.right = this.delete(value, root.right);
-    }
-    else if (value < root.num) {
+    } else if (value < root.num) {
       root.left = this.delete(value, root.left);
-    }
-    else {
+    } else {
       if (root.left === null) return root.right;
       else if (root.right === null) return root.left;
       root.key = this.#minVal(root.right);
@@ -63,7 +61,6 @@ export class Tree {
       if (value > current.num) current = current.right;
       else current = current.left;
       if (current === null) return "No Node found";
-
     }
     return current;
   }
@@ -80,6 +77,16 @@ export class Tree {
       if (current.right !== null) queue.push(current.right);
     }
     if (!callback) return result;
+  }
 
+  preOrder(callback, root = this.root, preOrderArray = []) {
+    let current = root;
+    if (current === null) return;
+    preOrderArray.push(current.num);
+    if (callback) callback(current);
+    this.preOrder(callback, current.left, preOrderArray);
+    this.preOrder(callback, current.right, preOrderArray);
+
+    if (!callback) return preOrderArray;
   }
 }
