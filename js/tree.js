@@ -127,4 +127,19 @@ export class Tree {
     else if (node.num < root.num) return this.depth(node, root.left, level + 1);
   }
 
+  isBalanced(node = this.root) {
+    if (node === null) return true;
+    let heightDiff = Math.abs(this.height(node.left) - this.height(node.right));
+    return (
+      heightDiff <= 1 &&
+      this.isBalanced(node.left) &&
+      this.isBalanced(node.right)
+    );
+  }
+
+  rebalance() {
+    if (this.root === null) return;
+    const rebalancedArray = [...new Set(this.inOrder())].sort((a, b) => a - b);
+    this.root = this.buildTree(rebalancedArray);
+  }
 }
