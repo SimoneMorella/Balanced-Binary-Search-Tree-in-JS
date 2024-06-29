@@ -9,6 +9,15 @@ export class Tree {
     return [...new Set(array)].sort((a, b) => a - b);
   }
 
+  #minVal(node) {
+    let minV = node.key;
+    while (node.left !== null) {
+      minV = node.left.key;
+      node = node.left;
+    }
+    return minV;
+  }
+
   buildTree(array) {
     const sortedSetArray = this.#setNSort(array);
     if (sortedSetArray.length === 0) return null;
@@ -30,4 +39,34 @@ export class Tree {
       : (root.left = this.insert(value, root.left));
     return root;
   }
+
+  delete(value, root = this.root) {
+    if (root === null) return root;
+    if (value > root.num) {
+      root.right = this.delete(value, root.right);
+    }
+    else if (value < root.num) {
+      root.left = this.delete(value, root.left);
+    }
+    else {
+      if (root.left === null) return root.right;
+      else if (root.right === null) return root.left;
+      root.key = this.#minVal(root.right);
+      root.right = this.delete(value, root.right);
+    }
+    return root;
+  }
+
+  find(value) {
+    let current = this.root;
+    while (current.num !== value) {
+      if (value > current.num) current = current.right;
+      else current = current.left;
+      if (current === null) return "No Node found";
+
+    }
+    return current;
+  }
+
+  
 }
